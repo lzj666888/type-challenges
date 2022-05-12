@@ -1,4 +1,7 @@
 import type { Equal, Expect } from '@type-challenges/utils'
+type MyPick<T, K extends keyof T> = {
+  [P in K]: T[P]
+}
 
 type cases = [
   Expect<Equal<Expected1, MyPick<Todo, 'title'>>>,
