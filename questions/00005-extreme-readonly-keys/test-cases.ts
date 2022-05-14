@@ -1,5 +1,7 @@
 import type { Equal, Expect } from '@type-challenges/utils'
 
+type GetReadonlyKeys<T extends {[key:any]:any}> = 
+
 type cases = [
   Expect<Equal<'title', GetReadonlyKeys<Todo1>>>,
   Expect<Equal<'title' | 'description', GetReadonlyKeys<Todo2>>>,
