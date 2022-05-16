@@ -1,5 +1,15 @@
 import type { Equal, Expect } from '@type-challenges/utils'
 
+/** 使用 extends 判断类型 + 泛型实现递归 */
+type DeepReadonly<T> = {
+  readonly [key in keyof T]: T[key] extends Record<string, unknown> | Array<unknown> ? DeepReadonly<T[key]> : T[key]
+  // readonly [K in keyof T] : T[K] extends Record<string,unknown> | Array<unknown> ?  DeepReadonly<T[K]> : T[K];
+}
+
+let a: number extends unknown ? 1 : 2 = 1
+
+const b: number = a
+
 type cases = [
   Expect<Equal<DeepReadonly<X>, Expected>>,
 ]
